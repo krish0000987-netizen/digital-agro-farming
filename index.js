@@ -153,4 +153,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 6. Hero Background Slideshow (3-second cycle)
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length > 0) {
+    let currentSlideIndex = 0;
+    setInterval(() => {
+      slides[currentSlideIndex].classList.remove('active');
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      slides[currentSlideIndex].classList.add('active');
+    }, 3000);
+  }
+
+  // 7. Hero Enquiry Form Mock Handler
+  const heroForm = document.getElementById('hero-enquiry-form');
+  const heroFormMsg = document.getElementById('hero-form-msg');
+  const heroSubmitBtn = document.getElementById('hero-submit-btn');
+
+  if (heroForm) {
+    heroForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('hero-input-name').value.trim();
+      const phone = document.getElementById('hero-input-phone').value.trim();
+      const location = document.getElementById('hero-input-location').value.trim();
+      const service = document.getElementById('hero-input-service').value;
+
+      if (!name || !phone || !location || !service) {
+        showHeroStatus('Please fill in all fields.', 'error');
+        return;
+      }
+
+      // 10-digit phone validation
+      const phoneRegex = /^[6-9]\d{9}$/;
+      if (!phoneRegex.test(phone.replace(/\s+/g, ''))) {
+        showHeroStatus('Please enter a valid 10-digit phone number.', 'error');
+        return;
+      }
+
+      // Disable submit during loading
+      heroSubmitBtn.disabled = true;
+      heroSubmitBtn.innerHTML = 'Sending... <i class="fa-solid fa-circle-notch fa-spin"></i>';
+      showHeroStatus('Sending inquiry...', 'success');
+
+      setTimeout(() => {
+        console.log('Hero Enquiry Submitted:', { name, phone, location, service });
+        
+        showHeroStatus(`<i class="fa-solid fa-circle-check"></i> Thank you, <strong>${name}</strong>! We will call you on <strong>${phone}</strong> shortly regarding <strong>${service}</strong>.`, 'success');
+        
+        heroForm.reset();
+        heroSubmitBtn.disabled = false;
+        heroSubmitBtn.innerHTML = 'Get Callback Now <i class="fa-solid fa-phone-flip"></i>';
+        
+        setTimeout(() => {
+          heroFormMsg.style.display = 'none';
+        }, 12000);
+      }, 1500);
+    });
+  }
+
+  function showHeroStatus(msg, type) {
+    if (heroFormMsg) {
+      heroFormMsg.innerHTML = msg;
+      heroFormMsg.className = `hero-form-status ${type}`;
+      heroFormMsg.style.display = 'block';
+    }
+  }
+
 });

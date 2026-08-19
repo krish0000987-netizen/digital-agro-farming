@@ -51,18 +51,59 @@
 
   <!-- Hero Section -->
   <section id="hero" class="hero-section">
+    <!-- Slideshow Background (3 second cycle) -->
+    <div class="hero-slideshow">
+      <div class="hero-slide active" style="background-image: url('assets/hero_bg.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/soil_analytics.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/smart_spraying.jpg');"></div>
+    </div>
+    
     <div class="hero-overlay"></div>
+    
     <div class="container hero-content">
-      <span class="badge" id="hero-badge"><i class="fa-solid fa-seedling"></i> Agriculture Meets Innovation</span>
-      <h1 id="hero-headline">Revolutionizing Farming Through Digital Innovation</h1>
-      <p id="hero-subheading" class="lead-text">
-        Digital Agro Farming Services combines high-precision drone spraying, advanced soil diagnostics, and scientific crop advisory to maximize agricultural yield, eliminate resource wastage, and protect crops with clinical precision.
-      </p>
-      <div class="hero-actions">
-        <a href="#services" class="btn btn-primary" id="hero-cta-services">Explore Services</a>
-        <a href="#contact" class="btn btn-outline" id="hero-cta-contact">Get in Touch</a>
+      <div class="hero-text-area">
+        <span class="badge" id="hero-badge"><i class="fa-solid fa-seedling"></i> Agriculture Meets Innovation</span>
+        <h1 id="hero-headline">Revolutionizing Farming Through Digital Innovation</h1>
+        <p id="hero-subheading" class="lead-text">
+          Digital Agro Farming Services combines high-precision drone spraying, advanced soil diagnostics, and scientific crop advisory to maximize agricultural yield, eliminate resource wastage, and protect crops with clinical precision.
+        </p>
+        <div class="hero-actions">
+          <a href="#services" class="btn btn-primary" id="hero-cta-services">Explore Services</a>
+          <a href="tel:9593069126" class="btn btn-outline" id="hero-cta-contact"><i class="fa-solid fa-phone"></i> Call Now</a>
+        </div>
+      </div>
+      
+      <div class="hero-form-area">
+        <div class="glass-form-card">
+          <h3>Quick Enquiry</h3>
+          <p>Get immediate expert call-back and advice.</p>
+          <form id="hero-enquiry-form">
+            <div class="hero-form-group">
+              <input type="text" id="hero-input-name" placeholder="Full Name" required>
+            </div>
+            <div class="hero-form-group">
+              <input type="tel" id="hero-input-phone" placeholder="Mobile Number (10 digits)" required>
+            </div>
+            <div class="hero-form-group">
+              <input type="text" id="hero-input-location" placeholder="Location / Village" required>
+            </div>
+            <div class="hero-form-group">
+              <select id="hero-input-service" required>
+                <option value="" disabled selected>Select Service Interested</option>
+                <option value="Drone Crop Spraying">Drone Crop Spraying</option>
+                <option value="Soil & Yield Analysis">Soil & Yield Analysis</option>
+                <option value="Crop Advisory & Bio-Solutions">Crop Advisory & Bio-Solutions</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary hero-submit-btn" id="hero-submit-btn">
+              Get Callback Now <i class="fa-solid fa-phone-flip"></i>
+            </button>
+            <div id="hero-form-msg" class="hero-form-status"></div>
+          </form>
+        </div>
       </div>
     </div>
+    
     <div class="hero-scroll-indicator">
       <a href="#services" aria-label="Scroll Down"><i class="fa-solid fa-chevron-down bounce"></i></a>
     </div>
