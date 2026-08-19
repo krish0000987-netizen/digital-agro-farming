@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   menuToggle.addEventListener('click', () => {
     siteNav.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
     
     // Toggle between bars and xmark icons
     if (siteNav.classList.contains('active')) {
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       siteNav.classList.remove('active');
+      document.body.classList.remove('no-scroll');
       menuIcon.classList.remove('fa-xmark');
       menuIcon.classList.add('fa-bars');
     });

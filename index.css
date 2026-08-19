@@ -59,6 +59,10 @@ body {
   overflow-x: hidden;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--primary-dark);
@@ -1266,8 +1270,8 @@ header {
   
   .nav-menu {
     position: absolute;
-    top: 80px;
-    left: -100%;
+    top: 100%;
+    left: 0;
     width: 100%;
     height: calc(100vh - 80px);
     background-color: var(--primary-dark);
@@ -1275,12 +1279,15 @@ header {
     padding: 40px 24px;
     gap: 24px;
     align-items: flex-start;
-    transition: var(--transition-smooth);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+    overflow-y: auto;
+    z-index: 999;
   }
   
   .nav-menu.active {
-    left: 0;
+    transform: translateX(0);
   }
   
   .nav-link {
@@ -1297,6 +1304,25 @@ header {
   .nav-actions .btn-phone {
     font-size: 0.85rem;
     padding: 8px 16px;
+  }
+  
+  @media (max-width: 480px) {
+    .nav-actions .btn-phone .phone-text {
+      display: none;
+    }
+    .nav-actions .btn-phone {
+      padding: 10px;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-actions .btn-phone i {
+      margin: 0;
+      font-size: 0.95rem;
+    }
   }
   
   /* Hero section adjustments */
